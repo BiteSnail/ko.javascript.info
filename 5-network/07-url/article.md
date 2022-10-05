@@ -5,24 +5,31 @@ The built-in [URL](https://url.spec.whatwg.org/#api) class provides a convenient
 
 There are no networking methods that require exactly a `URL` object, strings are good enough. So technically we don't have to use `URL`. But sometimes it can be really helpful.
 
+내장된 [URL](https://url.spec.whatwg.org/#api) 클래스는 URL을 만들거나 파싱하는데 있어 편리함을 제공합니다.
+
+하지만 네트워킹 메소드에는 꼭 `URL` 객체가 필요하진 않고, 문자열 만으로 충분합니다. 그래서 기술적으로 우리는 `URL`을 사용하지 않습니다만 몇몇 때에는 굉장히 유용해 질 수 있습니다.
+
 ## Creating a URL
 
 The syntax to create a new `URL` object:
+새로운 `URL` 객체를 만드는 구문: 
 
 ```js
 new URL(url, [base])
 ```
 
-- **`url`** -- the full URL or only path (if base is set, see below),
-- **`base`** -- an optional base URL: if set and `url` argument has only path, then the URL is generated relative to `base`.
+- **`url`** -- 전체 URL 혹은 경로 (만약 base가 set 이라면, 아래를 보십시오),   the full URL or only path (if base is set, see below),
+- **`base`** -- 추가적인 base URL: 만약 `url` 인자가 오직 경로만을 가질 때, `base`에 상대적인 URL이 생성됩니다. an optional base URL: if set and `url` argument has only path, then the URL is generated relative to `base`.
 
 For example:
+예시:
 
 ```js
 let url = new URL('https://javascript.info/profile/admin');
 ```
 
 These two URLs are same:
+두 가지 URL은 같습니다:
 
 ```js run
 let url1 = new URL('https://javascript.info/profile/admin');
@@ -33,6 +40,7 @@ alert(url2); // https://javascript.info/profile/admin
 ```
 
 We can easily create a new URL based on the path relative to an existing URL:
+존재하는 URL에 대해 상대적인 경로를 가진 새로운 URL을 손쉽게 만들 수 있습니다:
 
 ```js run
 let url = new URL('https://javascript.info/profile/admin');
@@ -42,6 +50,8 @@ alert(newUrl); // https://javascript.info/profile/tester
 ```
 
 The `URL` object immediately allows us to access its components, so it's a nice way to parse the url, e.g.:
+`URL` 객체는 구성요소에 접근할 수 있기 때문에, 다음과 같이 url을 구문 분석할 수 있습니다:
+
 
 ```js run
 let url = new URL('https://javascript.info/url');
